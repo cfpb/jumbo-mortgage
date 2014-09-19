@@ -25,7 +25,7 @@ Or use [Browserify](http://browserify.org/):
 
 ```sh
 npm install jumbo-mortgage --save
-var jumbo-mortgage = require('jumbo-mortgage');
+var jumbo = require('jumbo-mortgage');
 ```
 
 ## Usage
