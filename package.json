@@ -1,0 +1,32 @@
+{
+  "name": "jumbo-mortgage",
+  "version": "0.1.0",
+  "main": "index.js",
+  "description": "Tells you if a loan is 'jumbo'.",
+  "homepage": "https://github.com/cfpb/jumbo-mortgage",
+  "bugs": "https://github.com/cfpb/jumbo-mortgage/issues",
+  "author": {
+    "name": "Consumer Financial Protection Bureau",
+    "url": "http://consumerfinance.gov"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cfpb/jumbo-mortgage"
+  },
+  "license": "Public Domain",
+  "keywords": [
+    "jumbo-mortgage",
+    "mortgage",
+    "finance",
+    "browserify"
+  ],
+  "devDependencies": {
+    "nodeunit": "~0.8.6",
+    "browserify": "^4.1.3",
+    "uglify-js": "~2.4.15"
+  },
+  "scripts": {
+    "test": "nodeunit test/jumbo-mortgage-tests.js",
+    "browser": "mkdir -p dist && ./node_modules/.bin/browserify index.js -s jumbo-mortgage -o dist/jumbo-mortgage.js && ./node_modules/.bin/uglifyjs dist/jumbo-mortgage.js -m -c sequences,dead_code,conditionals,booleans,unused,if_return,join_vars,drop_console -o dist/jumbo-mortgage.min.js"
+  }
+}
