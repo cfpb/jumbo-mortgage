@@ -9,19 +9,13 @@
 
 ## Installation
 
-First install [node.js](http://nodejs.org/). Then:
-
-```sh
-npm install jumbo-mortgage --save
-```
-
 Grab the `dist/jumbo-mortgage.js` file and include it at the bottom of your page:
 
 ```html
 <script src="jumbo-mortgage.js"></script>
 ```
 
-Or use [Browserify](http://browserify.org/):
+Or use Node/[Browserify](http://browserify.org/):
 
 ```sh
 npm install jumbo-mortgage --save
@@ -36,7 +30,11 @@ var loan = jumbo({
   loanAmount: 250000
 });
 
-console.log( loan ); // { success: true, isJumbo: false }
+console.log( loan );
+// {
+//   success: true,
+//   isJumbo: false
+// }
 ```
 
 ```javascript
@@ -46,7 +44,12 @@ var loan = jumbo({
   loanAmount: 450000
 });
 
-console.log( loan ); // { success: false, needCounty: true, msg: 'Please provide county limits.' }
+console.log( loan );
+// {
+//   success: false,
+//   needCounty: true,
+//   msg: 'Please provide county limits.'
+// }
 ```
 
 ```javascript
