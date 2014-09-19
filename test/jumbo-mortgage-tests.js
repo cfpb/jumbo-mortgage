@@ -51,7 +51,7 @@ exports.jumboMortgage = {
     test.equal(
       JSON.stringify(loan),
       '{"success":true,"isJumbo":true,"type":"agency","msg":"When you borrow between 417000 and 450001 in your county, you are eligible for a conforming jumbo loan."}',
-      'conforming jumbo loan.'
+      'the loan amount is equal to or less than the max GSE loan amount for conforming jumbo IN THAT COUNTY'
     );
 
     loan = jumbo({
@@ -62,7 +62,7 @@ exports.jumboMortgage = {
     test.equal(
       JSON.stringify(loan),
       '{"success":true,"isJumbo":true,"type":"jumbo","msg":"When you borrow more than 450000 in your county, the only loan type available to you is a jumbo (non-conforming) loan."}',
-      'conforming jumbo loan.'
+      'loan amount is above the max GSE loan amount for conforming jumbo IN THAT COUNTY'
     );
 
     test.done();

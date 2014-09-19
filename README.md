@@ -32,12 +32,40 @@ var jumbo-mortgage = require('jumbo-mortgage');
 
 ```javascript
 var loan = jumbo({
-  loanType: 'conf', // conf, fha or va
-  loanAmount: 250000,
-  gseCountyLimit: 417000,
-  fhaCountyLimit: 271050,
-  vaCountyLimit: 417000
+  loanType: 'conf', // conf (conforming), fha or va
+  loanAmount: 250000
 });
+
+console.log( loan ); // { success: true, isJumbo: false }
+```
+
+```javascript
+// Loans above $417k *might* be jumbo. It depends on the county. You'll need to provide county limits.
+var loan = jumbo({
+  loanType: 'conf',
+  loanAmount: 450000
+});
+
+console.log( loan ); // { success: false, needCounty: true, msg: 'Please provide county limits.' }
+```
+
+```javascript
+// These county limits are for Alameda County, CA.
+loan = jumbo({
+  loanType: 'conf',
+  loanAmount: 750000,
+  gseCountyLimit: 625500,
+  fhaCountyLimit: 625500,
+  vaCountyLimit: 1050000
+});
+
+console.log( loan );
+// {
+//   success: true,
+//   isJumbo: true,
+//   type: 'jumbo',
+//   msg: 'When you borrow more than $625,500 in your county, the only loan type available to you is a jumbo (non-conforming) loan.'
+// }
 ```
 
 ## Contributing
