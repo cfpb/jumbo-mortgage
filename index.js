@@ -31,10 +31,14 @@ function getJumboLoanType( opts ) {
 
   switch ( type ) {
     case 'conf':
+    case 'agency':
+    case 'jumbo':
       return processConfLoan( amount, limits );
     case 'fha':
+    case 'fha-hb':
       return processFHALoan( amount, limits );
     case 'va':
+    case 'va-hb':
       return processVALoan( amount, limits );
     default:
       return fail();
