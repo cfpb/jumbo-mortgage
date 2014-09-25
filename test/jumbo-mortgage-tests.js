@@ -50,7 +50,7 @@ exports.jumboMortgage = {
     });
     test.equal(
       JSON.stringify(loan),
-      '{"success":true,"isJumbo":true,"type":"agency","msg":"When you borrow between 417000 and 450001 in your county, you are eligible for a conforming jumbo loan."}',
+      '{"success":true,"isJumbo":true,"type":"agency","msg":"When you borrow between $417,000 and $450,001 in your county, you are eligible for a conforming jumbo loan."}',
       'the loan amount is equal to or less than the max GSE loan amount for conforming jumbo IN THAT COUNTY'
     );
 
@@ -61,7 +61,7 @@ exports.jumboMortgage = {
     });
     test.equal(
       JSON.stringify(loan),
-      '{"success":true,"isJumbo":true,"type":"jumbo","msg":"When you borrow more than 450000 in your county, the only loan type available to you is a jumbo (non-conforming) loan."}',
+      '{"success":true,"isJumbo":true,"type":"jumbo","msg":"When you borrow more than $450,000 in your county, the only loan type available to you is a jumbo (non-conforming) loan."}',
       'loan amount is above the max GSE loan amount for conforming jumbo IN THAT COUNTY'
     );
 
@@ -77,7 +77,7 @@ exports.jumboMortgage = {
     });
     test.equal(
       JSON.stringify(loan),
-      '{"success":true,"isJumbo":true,"type":"fha-hb","msg":"When you borrow between 271050 and 416001 in your county, you are eligible for a high-balance FHA loan."}',
+      '{"success":true,"isJumbo":true,"type":"fha-hb","msg":"When you borrow between $271,050 and $416,001 in your county, you are eligible for a high-balance FHA loan."}',
       'loan amount is under the max FHA loan amount IN THAT COUNTY'
     );
 
@@ -89,7 +89,7 @@ exports.jumboMortgage = {
     });
     test.equal(
       JSON.stringify(loan),
-      '{"success":true,"isJumbo":true,"type":"conf","msg":"You are not eligible for an FHA loan when you borrow more than 415000 in your county. You are eligible for a conventional loan."}',
+      '{"success":true,"isJumbo":true,"type":"conf","msg":"You are not eligible for an FHA loan when you borrow more than $415,000 in your county. You are eligible for a conventional loan."}',
       'loan amount is above the max FHA loan amount FOR THAT COUNTY and less than $417,000'
     );
 
@@ -101,7 +101,7 @@ exports.jumboMortgage = {
     });
     test.equal(
       JSON.stringify(loan),
-      '{"success":true,"isJumbo":true,"type":"conf","msg":"You are not eligible for an FHA loan when you borrow more than 415000 in your county. You are eligible for a conventional loan."}',
+      '{"success":true,"isJumbo":true,"type":"conf","msg":"You are not eligible for an FHA loan when you borrow more than $415,000 in your county. You are eligible for a conventional loan."}',
       'loan amount is above the max FHA loan amount FOR THAT COUNTY and equal to $417,000'
     );
 
@@ -113,7 +113,7 @@ exports.jumboMortgage = {
     });
     test.equal(
       JSON.stringify(loan),
-      '{"success":true,"isJumbo":true,"type":"agency","msg":"You are not eligible for an FHA loan when you borrow more than 417000 in your county. You are eligible for a conforming jumbo loan."}',
+      '{"success":true,"isJumbo":true,"type":"agency","msg":"You are not eligible for an FHA loan when you borrow more than $417,000 in your county. You are eligible for a conforming jumbo loan."}',
       'loan amount is higher than $417,000 AND equal to the max GSE loan amount for conforming jumbo IN THAT COUNTY'
     );
 
@@ -125,7 +125,7 @@ exports.jumboMortgage = {
     });
     test.equal(
       JSON.stringify(loan),
-      '{"success":true,"isJumbo":true,"type":"agency","msg":"You are not eligible for an FHA loan when you borrow more than 417000 in your county. You are eligible for a conforming jumbo loan."}',
+      '{"success":true,"isJumbo":true,"type":"agency","msg":"You are not eligible for an FHA loan when you borrow more than $417,000 in your county. You are eligible for a conforming jumbo loan."}',
       'loan amount is higher than $417,000 AND less than the max GSE loan amount for conforming jumbo IN THAT COUNTY'
     );
 
@@ -137,7 +137,7 @@ exports.jumboMortgage = {
     });
     test.equal(
       JSON.stringify(loan),
-      '{"success":true,"isJumbo":true,"type":"jumbo","msg":"You are not eligible for an FHA loan when you borrow more than 417000 in your county. The only loan type available to you at this loan amount is a jumbo (non-conforming) loan."}',
+      '{"success":true,"isJumbo":true,"type":"jumbo","msg":"You are not eligible for an FHA loan when you borrow more than $417,000 in your county. The only loan type available to you at this loan amount is a jumbo (non-conforming) loan."}',
       'the loan amount is above $417,000 AND above than the max GSE loan amount for conforming jumbo IN THAT COUNTY'
     );
 
@@ -153,7 +153,7 @@ exports.jumboMortgage = {
     });
     test.equal(
       JSON.stringify(loan),
-      '{"success":true,"isJumbo":true,"type":"va-hb","msg":"When you borrow between 417000 and 450001 your county, you may be eligible for a high-balance VA loan."}',
+      '{"success":true,"isJumbo":true,"type":"va-hb","msg":"When you borrow between $417,000 and $450,001 your county, you may be eligible for a high-balance VA loan."}',
       'loan amount is > $417k but under the max VA loan amount for that county'
     );
 
@@ -165,7 +165,7 @@ exports.jumboMortgage = {
     });
     test.equal(
       JSON.stringify(loan),
-      '{"success":true,"isJumbo":true,"type":"agency","msg":"While VA loans do not have strict loan limits, most lenders are unlikely to make a VA loan more than 450000 in your county. Your only option may be a conforming jumbo loan."}',
+      '{"success":true,"isJumbo":true,"type":"agency","msg":"While VA loans do not have strict loan limits, most lenders are unlikely to make a VA loan more than $450,000 in your county. Your only option may be a conforming jumbo loan."}',
       'loan amount is above the max VA loan amount for that county and below the GSE limit for that county'
     );
 
@@ -177,7 +177,7 @@ exports.jumboMortgage = {
     });
     test.equal(
       JSON.stringify(loan),
-      '{"success":true,"isJumbo":true,"type":"jumbo","msg":"While VA loans do not have strict loan limits, most lenders are unlikely to make a VA loan more than 450000 in your county. Your only option may be a jumbo (non-conforming) loan."}',
+      '{"success":true,"isJumbo":true,"type":"jumbo","msg":"While VA loans do not have strict loan limits, most lenders are unlikely to make a VA loan more than $450,000 in your county. Your only option may be a jumbo (non-conforming) loan."}',
       'loan amount is above the max GSE loan amount for conforming jumbo loans for that county'
     );
 

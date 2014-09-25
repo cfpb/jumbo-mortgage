@@ -28,5 +28,8 @@
   "scripts": {
     "test": "nodeunit test/jumbo-mortgage-tests.js",
     "browser": "mkdir -p dist && browserify index.js -s jumbo -o dist/jumbo-mortgage.js && uglifyjs dist/jumbo-mortgage.js -m -c sequences,dead_code,conditionals,booleans,unused,if_return,join_vars,drop_console -o dist/jumbo-mortgage.min.js"
+  },
+  "dependencies": {
+    "format-usd": "~0.1.0"
   }
 }
