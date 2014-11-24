@@ -53,7 +53,7 @@ function getJumboLoanType( opts ) {
 }
 
 function processConfLoan( amount, limits ) {
-  if ( amount >= limits.gse.default ) {
+  if ( amount > limits.gse.default ) {
     if ( !limits.gse.county ) {
       return fail('county');
     }
@@ -69,7 +69,7 @@ function processConfLoan( amount, limits ) {
 }
 
 function processFHALoan( amount, limits ) {
-  if ( amount >= limits.fha.default ) {
+  if ( amount > limits.fha.default ) {
     if ( !limits.gse.county || !limits.fha.county ) {
       return fail('county');
     }
@@ -91,7 +91,7 @@ function processFHALoan( amount, limits ) {
 }
 
 function processVALoan( amount, limits ) {
-  if ( amount >= limits.va.default ) {
+  if ( amount > limits.va.default ) {
     if ( !limits.gse.county || !limits.va.county ) {
       return fail('county');
     }
