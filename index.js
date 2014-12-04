@@ -23,15 +23,15 @@ function getJumboLoanType( opts ) {
   // Each loan type has a standard limit and may optionally have a lower
   // one based on the relevant county.
   limits.gse = {
-    default: 417000,
+    defaultVal: 417000,
     county: opts.gseCountyLimit
   };
   limits.fha = {
-    default: 271050,
+    defaultVal: 271050,
     county: opts.fhaCountyLimit
   };
   limits.va = {
-    default: 417000,
+    defaultVal: 417000,
     county: opts.vaCountyLimit
   };
 
@@ -46,19 +46,19 @@ function getJumboLoanType( opts ) {
     case 'va':
     case 'va-hb':
       return processVALoan( amount, limits );
-    default:
+    defaultVal:
       return fail();
   }
 
 }
 
 function processConfLoan( amount, limits ) {
-  if ( amount > limits.gse.default ) {
+  if ( amount > limits.gse.defaultVal ) {
     if ( !limits.gse.county ) {
       return fail('county');
     }
     if ( amount <= limits.gse.county ) {
-      return success('agency', 'When you borrow between ' + usd( limits.gse.default ) + ' and ' + usd( limits.gse.county ) + ' in your county, you are eligible for a conforming jumbo loan.');
+      return success('agency', 'When you borrow between ' + usd( limits.gse.defaultVal ) + ' and ' + usd( limits.gse.county ) + ' in your county, you are eligible for a conforming jumbo loan.');
     }
     if ( amount > limits.gse.county ) {
       return success('jumbo', 'When you borrow more than ' + usd( limits.gse.county ) + ' in your county, the only loan type available to you is a jumbo (non-conforming) loan.');
@@ -69,21 +69,21 @@ function processConfLoan( amount, limits ) {
 }
 
 function processFHALoan( amount, limits ) {
-  if ( amount > limits.fha.default ) {
+  if ( amount > limits.fha.defaultVal ) {
     if ( !limits.gse.county || !limits.fha.county ) {
       return fail('county');
     }
     if ( amount <= limits.fha.county ) {
-      return success('fha-hb', 'When you borrow between ' + usd( limits.fha.default ) + ' and ' + usd( limits.fha.county ) + ' in your county, you are eligible for a high-balance FHA loan.');
+      return success('fha-hb', 'When you borrow between ' + usd( limits.fha.defaultVal ) + ' and ' + usd( limits.fha.county ) + ' in your county, you are eligible for a high-balance FHA loan.');
     }
-    if ( amount > limits.fha.county && amount <= limits.gse.default ) {
+    if ( amount > limits.fha.county && amount <= limits.gse.defaultVal ) {
       return success('conf', 'You are not eligible for an FHA loan when you borrow more than ' + usd( limits.fha.county ) + ' in your county. You are eligible for a conventional loan.');
     }
-    if ( amount > limits.gse.default && amount <= limits.gse.county ) {
-      return success('agency', 'You are not eligible for an FHA loan when you borrow more than ' + usd( limits.gse.default ) + ' in your county. You are eligible for a conforming jumbo loan.');
+    if ( amount > limits.gse.defaultVal && amount <= limits.gse.county ) {
+      return success('agency', 'You are not eligible for an FHA loan when you borrow more than ' + usd( limits.gse.defaultVal ) + ' in your county. You are eligible for a conforming jumbo loan.');
     }
-    if ( amount > limits.gse.default && amount > limits.gse.county ) {
-      return success('jumbo', 'You are not eligible for an FHA loan when you borrow more than ' + usd( limits.gse.default ) + ' in your county. The only loan type available to you at this loan amount is a jumbo (non-conforming) loan.');
+    if ( amount > limits.gse.defaultVal && amount > limits.gse.county ) {
+      return success('jumbo', 'You are not eligible for an FHA loan when you borrow more than ' + usd( limits.gse.defaultVal ) + ' in your county. The only loan type available to you at this loan amount is a jumbo (non-conforming) loan.');
     }
   }
   // It ain't jumbo
@@ -91,12 +91,12 @@ function processFHALoan( amount, limits ) {
 }
 
 function processVALoan( amount, limits ) {
-  if ( amount > limits.va.default ) {
+  if ( amount > limits.va.defaultVal ) {
     if ( !limits.gse.county || !limits.va.county ) {
       return fail('county');
     }
     if ( amount <= limits.va.county ) {
-      return success('va-hb', 'When you borrow between ' + usd( limits.va.default ) + ' and ' + usd(  limits.va.county ) + ' your county, you may be eligible for a high-balance VA loan.');
+      return success('va-hb', 'When you borrow between ' + usd( limits.va.defaultVal ) + ' and ' + usd(  limits.va.county ) + ' your county, you may be eligible for a high-balance VA loan.');
     }
     if ( amount > limits.va.county && amount < limits.gse.county ) {
       return success('agency', 'While VA loans do not have strict loan limits, most lenders are unlikely to make a VA loan more than ' + usd( limits.va.county ) + ' in your county. Your only option may be a conforming jumbo loan.');
