@@ -80,10 +80,10 @@ function processFHALoan( amount, limits ) {
       return success('conf', 'You are not eligible for an FHA loan when you borrow more than ' + usd( limits.fha.county ) + ' in your county. You are eligible for a conventional loan.');
     }
     if ( amount > limits.gse.defaultVal && amount <= limits.gse.county ) {
-      return success('agency', 'You are not eligible for an FHA loan when you borrow more than ' + usd( limits.gse.defaultVal ) + ' in your county. You are eligible for a conforming jumbo loan.');
+      return success('agency', 'You are not eligible for an FHA loan when you borrow more than ' + usd( limits.fha.county ) + ' in your county. You are eligible for a conforming jumbo loan.');
     }
     if ( amount > limits.gse.defaultVal && amount > limits.gse.county ) {
-      return success('jumbo', 'You are not eligible for an FHA loan when you borrow more than ' + usd( limits.gse.defaultVal ) + ' in your county. The only loan type available to you at this loan amount is a jumbo (non-conforming) loan.');
+      return success('jumbo', 'You are not eligible for an FHA loan when you borrow more than ' + usd( limits.fha.county ) + ' in your county. The only loan type available to you at this loan amount is a jumbo (non-conforming) loan.');
     }
   }
   // It ain't jumbo

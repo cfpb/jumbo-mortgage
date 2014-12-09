@@ -113,8 +113,8 @@ exports.jumboMortgage = {
     });
     test.equal(
       JSON.stringify(loan),
-      '{"success":true,"isJumbo":true,"type":"agency","msg":"You are not eligible for an FHA loan when you borrow more than $417,000 in your county. You are eligible for a conforming jumbo loan."}',
-      'loan amount is higher than $417,000 AND equal to the max GSE loan amount for conforming jumbo IN THAT COUNTY'
+      '{"success":true,"isJumbo":true,"type":"agency","msg":"You are not eligible for an FHA loan when you borrow more than $200,000 in your county. You are eligible for a conforming jumbo loan."}',
+      'loan amount is above the max FHA loan amount FOR THAT COUNTY AND loan amount is higher than $417,000 AND equal to the max GSE loan amount for conforming jumbo IN THAT COUNTY'
     );
 
     loan = jumbo({
@@ -125,8 +125,8 @@ exports.jumboMortgage = {
     });
     test.equal(
       JSON.stringify(loan),
-      '{"success":true,"isJumbo":true,"type":"agency","msg":"You are not eligible for an FHA loan when you borrow more than $417,000 in your county. You are eligible for a conforming jumbo loan."}',
-      'loan amount is higher than $417,000 AND less than the max GSE loan amount for conforming jumbo IN THAT COUNTY'
+      '{"success":true,"isJumbo":true,"type":"agency","msg":"You are not eligible for an FHA loan when you borrow more than $200,000 in your county. You are eligible for a conforming jumbo loan."}',
+      'loan amount is above the max FHA loan amount FOR THAT COUNTY AND loan amount is higher than $417,000 AND less than the max GSE loan amount for conforming jumbo IN THAT COUNTY'
     );
 
     loan = jumbo({
@@ -137,8 +137,8 @@ exports.jumboMortgage = {
     });
     test.equal(
       JSON.stringify(loan),
-      '{"success":true,"isJumbo":true,"type":"jumbo","msg":"You are not eligible for an FHA loan when you borrow more than $417,000 in your county. The only loan type available to you at this loan amount is a jumbo (non-conforming) loan."}',
-      'the loan amount is above $417,000 AND above than the max GSE loan amount for conforming jumbo IN THAT COUNTY'
+      '{"success":true,"isJumbo":true,"type":"jumbo","msg":"You are not eligible for an FHA loan when you borrow more than $200,000 in your county. The only loan type available to you at this loan amount is a jumbo (non-conforming) loan."}',
+      'loan amount is above the max FHA loan amount FOR THAT COUNTY AND the loan amount is above $417,000 AND above than the max GSE loan amount for conforming jumbo IN THAT COUNTY'
     );
 
     test.done();
