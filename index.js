@@ -96,7 +96,7 @@ function processVALoan( amount, limits ) {
       return fail('county');
     }
     if ( amount <= limits.va.county ) {
-      return success('va-hb', 'When you borrow between ' + usd( limits.va.defaultVal ) + ' and ' + usd(  limits.va.county ) + ' your county, you may be eligible for a high-balance VA loan.');
+      return success('va-hb', 'When you borrow between ' + usd( limits.va.defaultVal ) + ' and ' + usd(  limits.va.county ) + ' in your county, you may be eligible for a high-balance VA loan.');
     }
     if ( amount > limits.va.county && amount < limits.gse.county ) {
       return success('agency', 'While VA loans do not have strict loan limits, most lenders are unlikely to make a VA loan more than ' + usd( limits.va.county ) + ' in your county. Your only option may be a conforming jumbo loan.');
