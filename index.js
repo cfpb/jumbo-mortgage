@@ -58,10 +58,10 @@ function processConfLoan( amount, limits ) {
       return fail('county');
     }
     if ( amount <= limits.gse.county ) {
-      return success('agency', 'When you borrow between ' + usd( limits.gse.defaultVal ) + ' and ' + usd( limits.gse.county ) + ' in your county, you are eligible for a conforming jumbo loan.');
+      return success('agency', 'When you borrow between ' + usd( limits.gse.defaultVal ) + ' and ' + usd( limits.gse.county ) + ' in your county, you are eligible for a <a href="/owning-a-home/loan-options/conventional-loans/" target="_blank">conforming jumbo</a> loan.');
     }
     if ( amount > limits.gse.county ) {
-      return success('jumbo', 'When you borrow more than ' + usd( limits.gse.county ) + ' in your county, the only loan type available to you is a jumbo (non-conforming) loan.');
+      return success('jumbo', 'When you borrow more than ' + usd( limits.gse.county ) + ' in your county, the only loan type available to you is a <a href="/owning-a-home/loan-options/conventional-loans/" target="_blank">jumbo (non-conforming)</a> loan.');
     }
   }
   // It ain't jumbo
@@ -80,10 +80,10 @@ function processFHALoan( amount, limits ) {
       return success('conf', 'You are not eligible for an FHA loan when you borrow more than ' + usd( limits.fha.county ) + ' in your county. You are eligible for a conventional loan.');
     }
     if ( amount > limits.gse.defaultVal && amount <= limits.gse.county ) {
-      return success('agency', 'You are not eligible for an FHA loan when you borrow more than ' + usd( limits.fha.county ) + ' in your county. You are eligible for a conforming jumbo loan.');
+      return success('agency', 'You are not eligible for an FHA loan when you borrow more than ' + usd( limits.fha.county ) + ' in your county. You are eligible for a <a href="/owning-a-home/loan-options/conventional-loans/" target="_blank">conforming jumbo</a> loan.');
     }
     if ( amount > limits.gse.defaultVal && amount > limits.gse.county ) {
-      return success('jumbo', 'You are not eligible for an FHA loan when you borrow more than ' + usd( limits.fha.county ) + ' in your county. The only loan type available to you at this loan amount is a jumbo (non-conforming) loan.');
+      return success('jumbo', 'You are not eligible for an FHA loan when you borrow more than ' + usd( limits.fha.county ) + ' in your county. The only loan type available to you at this loan amount is a <a href="/owning-a-home/loan-options/conventional-loans/" target="_blank">jumbo (non-conforming)</a> loan.');
     }
   }
   // It ain't jumbo
@@ -99,10 +99,10 @@ function processVALoan( amount, limits ) {
       return success('va-hb', 'When you borrow between ' + usd( limits.va.defaultVal ) + ' and ' + usd(  limits.va.county ) + ' in your county, you may be eligible for a high-balance VA loan.');
     }
     if ( amount > limits.va.county && amount < limits.gse.county ) {
-      return success('agency', 'While VA loans do not have strict loan limits, most lenders are unlikely to make a VA loan more than ' + usd( limits.va.county ) + ' in your county. Your only option may be a conforming jumbo loan.');
+      return success('agency', 'While VA loans do not have strict loan limits, most lenders are unlikely to make a VA loan more than ' + usd( limits.va.county ) + ' in your county. Your only option may be a <a href="/owning-a-home/loan-options/conventional-loans/" target="_blank">conforming jumbo</a> loan.');
     }
     if ( amount > limits.gse.county ) {
-      return success('jumbo', 'While VA loans do not have strict loan limits, most lenders are unlikely to make a VA loan more than ' + usd( limits.va.county ) + ' in your county. Your only option may be a jumbo (non-conforming) loan.');
+      return success('jumbo', 'While VA loans do not have strict loan limits, most lenders are unlikely to make a VA loan more than ' + usd( limits.va.county ) + ' in your county. Your only option may be a <a href="/owning-a-home/loan-options/conventional-loans/" target="_blank">jumbo (non-conforming)</a> loan.');
     }
   }
   // It ain't jumbo
