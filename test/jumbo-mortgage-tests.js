@@ -153,7 +153,7 @@ exports.jumboMortgage = {
     });
     test.equal(
       JSON.stringify(loan),
-      '{"success":true,"isJumbo":true,"type":"va-hb","msg":"When you borrow between $417,000 and $450,001 your county, you may be eligible for a high-balance VA loan."}',
+      '{"success":true,"isJumbo":true,"type":"va-hb","msg":"When you borrow between $417,000 and $450,001 in your county, you may be eligible for a high-balance VA loan."}',
       'loan amount is > $417k but under the max VA loan amount for that county'
     );
 
