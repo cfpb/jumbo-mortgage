@@ -1,11 +1,8 @@
 # jumbo-mortgage [![Build Status](https://secure.travis-ci.org/cfpb/jumbo-mortgage.png?branch=master)](http://travis-ci.org/cfpb/jumbo-mortgage)
 
-[![NPM](https://nodei.co/npm/jumbo-mortgage.png?downloads=true)](https://nodei.co/npm/jumbo-mortgage/)
-
-[![browser support](https://ci.testling.com/cfpb/jumbo-mortgage.png)
-](https://ci.testling.com/cfpb/jumbo-mortgage)
-
 > Tells you if a loan is "jumbo".
+
+**Note:** Loan limits [increased in 2017](https://www.fhfa.gov/Media/PublicAffairs/Pages/FHFA-Announces-Increase-in-Maximum-Conforming-Loan-Limits-for-Fannie-Mae-and-Freddie-Mac-in-2017.aspx). Use v1.x.x of this module if you want 2016 limits. Use v2.x.x for 2017 limits.
 
 ## Installation
 
@@ -38,7 +35,7 @@ console.log( loan );
 ```
 
 ```javascript
-// Loans above $417k *might* be jumbo. It depends on the county. You'll need to provide county limits.
+// Loans above $424,100 *might* be jumbo. It depends on the county. You'll need to provide county limits.
 var loan = jumbo({
   loanType: 'conf',
   loanAmount: 450000

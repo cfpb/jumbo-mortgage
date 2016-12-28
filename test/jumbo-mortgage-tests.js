@@ -41,7 +41,7 @@ exports.jumboMortgage = {
     test.equal(JSON.stringify(loan), '{"success":true,"isJumbo":false}', 'va should not be jumbo');
     test.done();
   },
-  'When user chooses conventional + loan amount >= $417k': function(test) {
+  'When user chooses conventional + loan amount >= $424,100': function(test) {
 
     var loan = jumbo({
       loanType: 'conf',
@@ -50,7 +50,7 @@ exports.jumboMortgage = {
     });
     test.equal(
       JSON.stringify(loan),
-      '{"success":true,"isJumbo":true,"type":"agency","msg":"When you borrow between $417,000 and $450,001 in your county, you are eligible for a conforming jumbo loan."}',
+      '{"success":true,"isJumbo":true,"type":"agency","msg":"When you borrow between $424,100 and $450,001 in your county, you are eligible for a conforming jumbo loan."}',
       'the loan amount is equal to or less than the max GSE loan amount for conforming jumbo IN THAT COUNTY'
     );
 
@@ -67,7 +67,7 @@ exports.jumboMortgage = {
 
     test.done();
   },
-  'When user chooses FHA + loan amount >= $271,050': function(test) {
+  'When user chooses FHA + loan amount >= $275,665': function(test) {
 
     var loan = jumbo({
       loanType: 'fha',
@@ -77,7 +77,7 @@ exports.jumboMortgage = {
     });
     test.equal(
       JSON.stringify(loan),
-      '{"success":true,"isJumbo":true,"type":"fha-hb","msg":"When you borrow between $271,050 and $416,001 in your county, you are eligible for a high-balance FHA loan."}',
+      '{"success":true,"isJumbo":true,"type":"fha-hb","msg":"When you borrow between $275,665 and $416,001 in your county, you are eligible for a high-balance FHA loan."}',
       'loan amount is under the max FHA loan amount IN THAT COUNTY'
     );
 
@@ -90,7 +90,7 @@ exports.jumboMortgage = {
     test.equal(
       JSON.stringify(loan),
       '{"success":true,"isJumbo":true,"type":"conf","msg":"You are not eligible for an FHA loan when you borrow more than $415,000 in your county. You are eligible for a conventional loan."}',
-      'loan amount is above the max FHA loan amount FOR THAT COUNTY and less than $417,000'
+      'loan amount is above the max FHA loan amount FOR THAT COUNTY and less than $424,100'
     );
 
     loan = jumbo({
@@ -102,48 +102,48 @@ exports.jumboMortgage = {
     test.equal(
       JSON.stringify(loan),
       '{"success":true,"isJumbo":true,"type":"conf","msg":"You are not eligible for an FHA loan when you borrow more than $415,000 in your county. You are eligible for a conventional loan."}',
-      'loan amount is above the max FHA loan amount FOR THAT COUNTY and equal to $417,000'
+      'loan amount is above the max FHA loan amount FOR THAT COUNTY and equal to $424,100'
     );
 
     loan = jumbo({
       loanType: 'fha',
-      loanAmount: 417001,
-      gseCountyLimit: 417001,
+      loanAmount: 424101,
+      gseCountyLimit: 424101,
       fhaCountyLimit: 200000
     });
     test.equal(
       JSON.stringify(loan),
       '{"success":true,"isJumbo":true,"type":"agency","msg":"You are not eligible for an FHA loan when you borrow more than $200,000 in your county. You are eligible for a conforming jumbo loan."}',
-      'loan amount is above the max FHA loan amount FOR THAT COUNTY AND loan amount is higher than $417,000 AND equal to the max GSE loan amount for conforming jumbo IN THAT COUNTY'
+      'loan amount is above the max FHA loan amount FOR THAT COUNTY AND loan amount is higher than $424,100 AND equal to the max GSE loan amount for conforming jumbo IN THAT COUNTY'
     );
 
     loan = jumbo({
       loanType: 'fha',
-      loanAmount: 417001,
-      gseCountyLimit: 417002,
+      loanAmount: 424101,
+      gseCountyLimit: 424102,
       fhaCountyLimit: 200000
     });
     test.equal(
       JSON.stringify(loan),
       '{"success":true,"isJumbo":true,"type":"agency","msg":"You are not eligible for an FHA loan when you borrow more than $200,000 in your county. You are eligible for a conforming jumbo loan."}',
-      'loan amount is above the max FHA loan amount FOR THAT COUNTY AND loan amount is higher than $417,000 AND less than the max GSE loan amount for conforming jumbo IN THAT COUNTY'
+      'loan amount is above the max FHA loan amount FOR THAT COUNTY AND loan amount is higher than $424,100 AND less than the max GSE loan amount for conforming jumbo IN THAT COUNTY'
     );
 
     loan = jumbo({
       loanType: 'fha',
-      loanAmount: 417002,
-      gseCountyLimit: 417001,
+      loanAmount: 424102,
+      gseCountyLimit: 424101,
       fhaCountyLimit: 200000
     });
     test.equal(
       JSON.stringify(loan),
       '{"success":true,"isJumbo":true,"type":"jumbo","msg":"You are not eligible for an FHA loan when you borrow more than $200,000 in your county. The only loan type available to you at this loan amount is a jumbo (non-conforming) loan."}',
-      'loan amount is above the max FHA loan amount FOR THAT COUNTY AND the loan amount is above $417,000 AND above than the max GSE loan amount for conforming jumbo IN THAT COUNTY'
+      'loan amount is above the max FHA loan amount FOR THAT COUNTY AND the loan amount is above $424,100 AND above than the max GSE loan amount for conforming jumbo IN THAT COUNTY'
     );
 
     test.done();
   },
-  'When user chooses VA + Loan amount >= $417k': function(test) {
+  'When user chooses VA + Loan amount >= $424,100': function(test) {
 
     var loan = jumbo({
       loanType: 'va',
@@ -153,8 +153,8 @@ exports.jumboMortgage = {
     });
     test.equal(
       JSON.stringify(loan),
-      '{"success":true,"isJumbo":true,"type":"va-hb","msg":"When you borrow between $417,000 and $450,001 in your county, you may be eligible for a high-balance VA loan."}',
-      'loan amount is > $417k but under the max VA loan amount for that county'
+      '{"success":true,"isJumbo":true,"type":"va-hb","msg":"When you borrow between $424,100 and $450,001 in your county, you may be eligible for a high-balance VA loan."}',
+      'loan amount is > $424,100 but under the max VA loan amount for that county'
     );
 
     loan = jumbo({
