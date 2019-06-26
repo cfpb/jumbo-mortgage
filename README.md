@@ -2,7 +2,7 @@
 
 > Tells you if a loan is "jumbo".
 
-**Note:** Loan limits [increased in 2017](https://www.fhfa.gov/Media/PublicAffairs/Pages/FHFA-Announces-Increase-in-Maximum-Conforming-Loan-Limits-for-Fannie-Mae-and-Freddie-Mac-in-2017.aspx). Use v1.x.x of this module if you want 2016 limits. Use v2.x.x for 2017 limits.
+**Note:** Loan limits [increased in 2017](https://www.fhfa.gov/Media/PublicAffairs/Pages/FHFA-Announces-Increase-in-Maximum-Conforming-Loan-Limits-for-Fannie-Mae-and-Freddie-Mac-in-2017.aspx) and [in 2019](https://www.fhfa.gov/Media/PublicAffairs/Pages/FHFA-Announces-Maximum-Conforming-Loan-Limits-for-2019.aspx). Use v1.x.x of this module if you want 2016 limits. Use v2.x.x for 2017 limits. Use v3.x.x for 2019 limits.
 
 ## Installation
 
