@@ -23,15 +23,15 @@ function getJumboLoanType( opts ) {
   // Each loan type has a standard limit and may optionally have a lower
   // one based on the relevant county.
   limits.gse = {
-    defaultVal: 484350,
+    defaultVal: 726200,
     county: opts.gseCountyLimit
   };
   limits.fha = {
-    defaultVal: 314827,
+    defaultVal: 472030,
     county: opts.fhaCountyLimit
   };
   limits.va = {
-    defaultVal: 484350,
+    defaultVal: 726200,
     county: opts.vaCountyLimit
   };
 

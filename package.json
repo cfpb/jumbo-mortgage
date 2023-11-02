@@ -1,6 +1,6 @@
 {
   "name": "jumbo-mortgage",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "main": "index.js",
   "description": "Check if a loan is jumbo or high balance.",
   "homepage": "https://github.com/cfpb/jumbo-mortgage",

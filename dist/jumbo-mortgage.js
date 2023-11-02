@@ -24,15 +24,15 @@ function getJumboLoanType( opts ) {
   // Each loan type has a standard limit and may optionally have a lower
   // one based on the relevant county.
   limits.gse = {
-    defaultVal: 417000,
+    defaultVal: 726200,
     county: opts.gseCountyLimit
   };
   limits.fha = {
-    defaultVal: 271050,
+    defaultVal: 472030,
     county: opts.fhaCountyLimit
   };
   limits.va = {
-    defaultVal: 417000,
+    defaultVal: 726200,
     county: opts.vaCountyLimit
   };
 
@@ -81,10 +81,10 @@ function processFHALoan( amount, limits ) {
       return success('conf', 'You are not eligible for an FHA loan when you borrow more than ' + usd( limits.fha.county ) + ' in your county. You are eligible for a conventional loan.');
     }
     if ( amount > limits.gse.defaultVal && amount <= limits.gse.county ) {
-      return success('agency', 'You are not eligible for an FHA loan when you borrow more than ' + usd( limits.gse.defaultVal ) + ' in your county. You are eligible for a conforming jumbo loan.');
+      return success('agency', 'You are not eligible for an FHA loan when you borrow more than ' + usd( limits.fha.county ) + ' in your county. You are eligible for a conforming jumbo loan.');
     }
     if ( amount > limits.gse.defaultVal && amount > limits.gse.county ) {
-      return success('jumbo', 'You are not eligible for an FHA loan when you borrow more than ' + usd( limits.gse.defaultVal ) + ' in your county. The only loan type available to you at this loan amount is a jumbo (non-conforming) loan.');
+      return success('jumbo', 'You are not eligible for an FHA loan when you borrow more than ' + usd( limits.fha.county ) + ' in your county. The only loan type available to you at this loan amount is a jumbo (non-conforming) loan.');
     }
   }
   // It ain't jumbo
@@ -97,7 +97,7 @@ function processVALoan( amount, limits ) {
       return fail('county');
     }
     if ( amount <= limits.va.county ) {
-      return success('va-hb', 'When you borrow between ' + usd( limits.va.defaultVal ) + ' and ' + usd(  limits.va.county ) + ' your county, you may be eligible for a high-balance VA loan.');
+      return success('va-hb', 'When you borrow between ' + usd( limits.va.defaultVal ) + ' and ' + usd(  limits.va.county ) + ' in your county, you may be eligible for a high-balance VA loan.');
     }
     if ( amount > limits.va.county && amount < limits.gse.county ) {
       return success('agency', 'While VA loans do not have strict loan limits, most lenders are unlikely to make a VA loan more than ' + usd( limits.va.county ) + ' in your county. Your only option may be a conforming jumbo loan.');
@@ -148,6 +148,7 @@ function fail( status ) {
 }
 
 module.exports = getJumboLoanType;
+
 },{"format-usd":2}],2:[function(_dereq_,module,exports){
 /**
  * @param  {string|number} num  A number or a string in a numbery format
