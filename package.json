@@ -1,5 +1,5 @@
 {
-  "name": "jumbo-mortgage",
+  "name": "@cfpb/jumbo-mortgage",
   "version": "4.0.0",
   "main": "index.js",
   "description": "Check if a loan is jumbo or high balance.",
